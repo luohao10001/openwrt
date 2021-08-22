@@ -14,7 +14,7 @@ on:
 
   repository_dispatch:
 
-    types: sync-DD-D1-2020scripts
+    types: openwrt-boos4721
 
 jobs:
 
