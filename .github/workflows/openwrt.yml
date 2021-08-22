@@ -1,0 +1,53 @@
+name: openwrtBoos4721
+
+on:
+
+  schedule:
+
+    - cron: '14 */3 * * *'
+
+  workflow_dispatch:
+
+  watch:
+
+    types: started
+
+  repository_dispatch:
+
+    types: sync-DD-D1-2020scripts
+
+jobs:
+
+  repo-sync:
+
+    env:
+
+      PAT: ${{ secrets.PAT }} 
+
+    runs-on: ubuntu-latest
+
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+        with:
+
+          persist-credentials: false
+
+      - name: openwrt
+
+        uses: repo-sync/github-sync@v2
+
+        if: env.PAT
+
+        with:
+
+          source_repo: "https://github.com/Boos4721/openwrt.git"
+
+          source_branch: "master"
+
+          destination_branch: "master"
+
+          github_token: ${{ secrets.PAT }}
