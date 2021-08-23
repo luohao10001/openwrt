@@ -44,7 +44,7 @@ jobs:
 
         with:
 
-          source_repo: "https://github.com/Boos4721/openwrt.git"
+          source_repo: "https://github.com/coolsnowwolf/lede.git"
 
           source_branch: "master"
 
